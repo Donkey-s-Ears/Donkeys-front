@@ -1,10 +1,3 @@
-import ReactDOM from "react-dom";
-import Style from "./App.css";
+import ReactDOM from 'react-dom';
 
-console.log({ Style });
-
-function App() {
-  return <div></div>;
-}
-
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById('root'));
