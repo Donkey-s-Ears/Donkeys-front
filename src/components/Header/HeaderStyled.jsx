@@ -5,6 +5,9 @@ export const HeaderStyled = styled.div`
   height: 70px;
   line-height: 70px;
   vertical-align: middle;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 HeaderStyled.inline = styled.div`
@@ -15,15 +18,32 @@ HeaderStyled.inline = styled.div`
 export const NavBarStyled = styled.ul`
   display: flex;
   max-width: 1440px;
-  width: 100%;
   flex-direction: row;
   list-style-type: none;
   justify-content: center;
   align-items: center;
+
+  li:hover {
+    a {
+      color: orange;
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
 `;
 
-NavBarStyled.navItem = styled.li`
+NavBarStyled.mainItem = styled.li`
   cursor: pointer;
   font-size: 18px;
   font-weight: 500;
+  padding: 0 25px;
+`;
+
+NavBarStyled.utilItem = styled.li`
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0 10px;
 `;
