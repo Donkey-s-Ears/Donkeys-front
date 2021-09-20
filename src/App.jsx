@@ -7,10 +7,10 @@ import styled, { createGlobalStyle } from 'styled-components';
 const GlobalStyled = createGlobalStyle`
 	* {
 		margin: 0;
+		box-sizing: border-box;
 	}
 
 	html, body {
-		margin: 0;
 		height: 100%;
 		background-color: #f5f5dc;
 	}

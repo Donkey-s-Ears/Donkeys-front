@@ -17,10 +17,10 @@ const Header = () => (
     </NavBarStyled>
     <NavBarStyled>
       <NavBarStyled.utilItem>
-        <Link to="#">로그인</Link>
+        <Link to="/LoginPage">로그인</Link>
       </NavBarStyled.utilItem>
       <NavBarStyled.utilItem>
-        <Link to="#">회원가입</Link>
+        <Link to="/RegisterPage">회원가입</Link>
       </NavBarStyled.utilItem>
     </NavBarStyled>
   </HeaderStyled>
