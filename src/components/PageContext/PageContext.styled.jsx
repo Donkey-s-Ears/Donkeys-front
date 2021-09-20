@@ -9,6 +9,7 @@ const PageContextStyled = styled.div`
   vertical-align: middle;
   font-size: 28px;
   background-color: #c38f63;
+  margin: auto;
 `;
 
 export default PageContextStyled;
