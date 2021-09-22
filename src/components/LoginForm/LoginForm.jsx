@@ -1,6 +1,6 @@
 import LoginFormStyled, { LoginWrapper } from './LoginForm.Styled.jsx';
 import InputWithLabel from '../Form/InputWithLabel.jsx';
-import LoginButton from '../Form/LoginButton.jsx';
+import FormButton from '../Form/FormButton.jsx';
 
 const LoginForm = () => {
   function handleSubmit(e) {
@@ -14,7 +14,7 @@ const LoginForm = () => {
       <LoginFormStyled onSubmit={handleSubmit}>
         <InputWithLabel name="email" placeholder="이메일을 입력해주세요." type="email" />
         <InputWithLabel name="password" placeholder="비밀번호를 입력해주세요." type="password" />
-        <LoginButton type="submit" />
+        <FormButton type="submit" />
       </LoginFormStyled>
     </LoginWrapper>
   );

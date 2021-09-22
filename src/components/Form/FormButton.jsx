@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const LoginButtonStyled = styled.button`
+const FormButtonStyled = styled.button`
   width: 100%;
   margin-top: 2rem;
   padding-top: 0.6rem;
@@ -27,8 +27,8 @@ const LoginButtonStyled = styled.button`
   }
 `;
 
-const LoginButton = props => {
-  return <LoginButtonStyled {...props}>로그인</LoginButtonStyled>;
+const FormButton = props => {
+  return <FormButtonStyled {...props}>로그인</FormButtonStyled>;
 };
 
-export default LoginButton;
+export default FormButton;

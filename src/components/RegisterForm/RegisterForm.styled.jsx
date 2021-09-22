@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   background-color: #eabf9f;
 `;
 
-const RegisterFormStyled = styled.div`
+const RegisterFormStyled = styled.form`
   width: 460px;
   min-height: 350px;
 `;

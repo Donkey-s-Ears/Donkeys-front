@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import styled from 'styled-components';
 
 const EmailInput = styled.input`
@@ -25,49 +25,80 @@ const DomainWrapper = styled.div`
 
 const DropDownAnchor = styled.div`
   position: absolute;
-  height: 0px;
+  display: ${props => props.isActive};
 `;
 
 const DropDownWrapper = styled.div`
+  width: 220px;
   height: 200px;
-  opacity: ${props => props.isActive};
+  background-color: white;
 `;
 
 const DropDownUl = styled.ul`
   overflow: hidden;
   list-style-type: none;
   li {
-    text-decoration: 1px solid black;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;
 
 const EmailForm = () => {
   const [Addr, setAddr] = useState('');
   const [isActive, setIsActive] = useState(false);
+  const domainInput = useRef('');
   const domainList = ['직접입력', 'naver.com', 'daum.net', 'gmail.com', 'nate.com', 'hanmail.net'];
 
-  const onChange = e => {
-    console.log(e.target.value);
-    if (e.target.value === '직접입력') {
-      e.target.value = '';
+  const onClickUl = e => {
+    console.log('onClickUl');
+    if (e.target.innerText === '직접입력') {
+      setAddr('');
+      domainInput.current.focus();
+    } else {
+      setAddr(e.target.innerText);
     }
-    setAddr(e.target.value);
   };
 
-  const onClick = () => {
+  const onChange = e => {
+    console.log('onChange');
+    setAddr(() => e.target.value);
+  };
+
+  const onClick = e => {
+    e.stopPropagation();
+    console.log('onClick');
     setIsActive(prev => !prev);
-    console.log(isActive);
+  };
+
+  const onBlur = () => {
+    setIsActive(false);
+  };
+
+  const handleMouseDown = e => {
+    e.preventDefault();
   };
 
   return (
     <Wrapper>
-      <EmailInput name="emailId" placeholder="이메일 아이디" type="text" />
-      <div>&nbsp;@&nbsp;</div>
+      <EmailInput name="emailId" placeholder="이메일 아이디" type="text" required />
+      &nbsp;@&nbsp;
       <DomainWrapper onClick={onClick}>
-        <EmailInput name="emailAddr" value={Addr} placeholder="직접입력" type="text" onChange={onChange} />
-        <DropDownAnchor>
-          <DropDownWrapper isActive={Number(isActive)}>
-            <DropDownUl>
+        <EmailInput
+          name="emailAddr"
+          value={Addr}
+          placeholder="직접입력"
+          type="text"
+          onChange={onChange}
+          onBlur={onBlur}
+          pattern="[a-z0-9.-]+\.[a-z]{2,}$"
+          autoComplete="off"
+          ref={domainInput}
+          required
+        />
+        <DropDownAnchor onMouseDown={handleMouseDown} isActive={isActive ? 'block' : 'none'}>
+          <DropDownWrapper>
+            <DropDownUl onClick={onClickUl}>
               {domainList.map(domain => (
                 <li key={domain}>{domain}</li>
               ))}
