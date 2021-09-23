@@ -2,6 +2,7 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 
 const port = process.env.PORT || 3000;
 const mode = process.env.NODE_NEV || 'development';
@@ -49,7 +50,8 @@ module.exports = {
     }),
     new webpack.ProvidePlugin({
       React: 'react'
-    })
+    }),
+    new Dotenv()
   ],
   mode: mode,
   devServer: {

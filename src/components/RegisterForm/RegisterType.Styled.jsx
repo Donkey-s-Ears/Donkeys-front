@@ -51,11 +51,12 @@ RegisterTypeStyled.button = styled.button`
   font-weight: 600;
 `;
 
-RegisterTypeStyled.bottom = styled.button`
+RegisterTypeStyled.bottom = styled.div`
   width: 100%;
   height: 140px;
   background-color: #fff;
   border: none;
+  text-align: center;
 `;
 
 export default RegisterTypeStyled;

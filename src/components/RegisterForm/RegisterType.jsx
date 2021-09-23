@@ -1,4 +1,5 @@
 import RegisterTypeStyled from './RegisterType.Styled.jsx';
+import GoogleOAuth from '../OAuth/GoogleOAuth.jsx';
 
 const RegisterType = ({ setIsActive }) => {
   const onClickHandler = () => {
@@ -16,6 +17,7 @@ const RegisterType = ({ setIsActive }) => {
       </RegisterTypeStyled.middle>
       <RegisterTypeStyled.bottom>
         <div>SNS 계정으로 회원가입</div>
+        <GoogleOAuth />
       </RegisterTypeStyled.bottom>
     </RegisterTypeStyled>
   );
