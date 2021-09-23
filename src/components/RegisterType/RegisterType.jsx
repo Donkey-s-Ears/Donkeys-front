@@ -8,11 +8,11 @@ const RegisterType = ({ setIsActive }) => {
   return (
     <RegisterTypeStyled>
       <RegisterTypeStyled.Top>
-        회원가입
+        <div>회원가입</div>
         <RegisterTypeStyled.exitButton onClick={onClickHandler}>X</RegisterTypeStyled.exitButton>
       </RegisterTypeStyled.Top>
       <RegisterTypeStyled.middle>
-        이메일 회원가입
+        <div>이메일 회원가입</div>
         <RegisterTypeStyled.button onClick={onClickHandler}>회원가입</RegisterTypeStyled.button>
       </RegisterTypeStyled.middle>
       <RegisterTypeStyled.bottom>

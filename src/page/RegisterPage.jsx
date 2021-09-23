@@ -1,6 +1,7 @@
 import PageContextStyled from '../components/PageContext/PageContext.styled.jsx';
 import RegisterStep from '../components/RegisterStep/RegisterStep.jsx';
 import RegisterForm from '../components/RegisterForm/RegisterForm.jsx';
+import RegisterType from '../components/RegisterType/RegisterType.jsx';
 import Modal from '../components/Modal/Modal.jsx';
 
 const RegisterPage = () => {
@@ -10,7 +11,7 @@ const RegisterPage = () => {
       <PageContextStyled>회원가입 페이지 문구</PageContextStyled>
       <RegisterStep />
       <RegisterForm />
-      <Modal />
+      <Modal ModalContext={RegisterType} />
     </>
   );
 };
