@@ -1,8 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ModalStyled from './Modal.Styled.jsx';
 
-const Modal = ({ ModalContext }) => {
-  const [isActive, setIsActive] = useState(false);
+const Modal = ({ ModalContext, isActive, setIsActive }) => {
   return (
     <ModalStyled isActive={isActive}>
       <ModalStyled.background />

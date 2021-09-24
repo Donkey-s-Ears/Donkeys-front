@@ -5,6 +5,7 @@ const RegisterType = ({ setIsActive }) => {
   const onClickHandler = () => {
     setIsActive(true);
   };
+
   return (
     <RegisterTypeStyled>
       <RegisterTypeStyled.Top>
@@ -17,7 +18,7 @@ const RegisterType = ({ setIsActive }) => {
       </RegisterTypeStyled.middle>
       <RegisterTypeStyled.bottom>
         <div>SNS 계정으로 회원가입</div>
-        <GoogleOAuth />
+        <GoogleOAuth onClickHandler={onClickHandler} />
       </RegisterTypeStyled.bottom>
     </RegisterTypeStyled>
   );

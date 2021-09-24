@@ -28,6 +28,7 @@ const RegisterForm = () => {
     registerObj.avartar.append('avartar', e.target.avartar.files[0]);
     console.log(registerObj);
     console.log(registerObj.avartar.get('avartar'));
+    window.location.replace('/');
   };
 
   return (

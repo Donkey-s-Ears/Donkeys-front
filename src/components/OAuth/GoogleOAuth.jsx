@@ -12,9 +12,10 @@ const myCustomStyle = {
   cursor: 'pointer'
 };
 
-const GoogleOAuth = () => {
+const GoogleOAuth = ({ onClickHandler }) => {
   const onLoginGoogle = res => {
     console.log(res);
+    onClickHandler();
   };
 
   return (
