@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DownArrow } from '../../styled/arrow.styled.js';
 
 export const HeaderStyled = styled.header`
   width: 100%;
@@ -46,4 +47,12 @@ NavBarStyled.utilItem = styled.li`
   font-size: 14px;
   font-weight: 500;
   padding: 0 10px;
+  line-height: 70px;
+`;
+
+export const MypageDownArrow = styled(DownArrow)`
+  position: relative;
+  left 10%;
+	top: 2px;
+	vertical-align: middle;
 `;

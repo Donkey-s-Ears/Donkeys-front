@@ -3,6 +3,12 @@ import { MainPage, MyPage, RegisterPage, LoginPage, FindPasswordPage, CallPage }
 import Header from './components/Header/Header.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { theme } from './styled/theme';
+
+const UserDemo = {
+  email: 'jkl5846@gmail.com',
+  nickname: 'jongkim'
+};
 
 const GlobalStyled = createGlobalStyle`
 	* {
@@ -22,16 +28,6 @@ const GlobalStyled = createGlobalStyle`
 	}
 `;
 
-const theme = {
-  pageMaxWidth: '1980px',
-  mainColor: '#c38f63',
-  form: {
-    width: '960px',
-    height: '490px',
-    bgColor: '#E7D4B5'
-  }
-};
-
 const Wrapper = styled.div`
   position: relative;
   max-width: ${({ theme }) => theme.pageMaxWidth};
@@ -44,7 +40,7 @@ const App = () => (
     <ThemeProvider theme={theme}>
       <Wrapper>
         <Router>
-          <Header />
+          <Header user={UserDemo} />
           <Switch>
             <Route exact path="/" render={() => <MainPage />}></Route>
             <Route exact path="/MyPage" render={() => <MyPage />}></Route>

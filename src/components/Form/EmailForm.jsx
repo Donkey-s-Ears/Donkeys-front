@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import styled from 'styled-components';
+import { DownArrow } from '../../styled/arrow.styled';
 
 const EmailInput = styled.input`
   width: 220px;
@@ -14,13 +15,17 @@ const Wrapper = styled.div`
   display: flex;
   width: 460px;
   align-items: center;
+  margin-top: 20px;
+`;
+
+const DropDownArrow = styled(DownArrow)`
+  position: absolute;
+  top: 50%;
+  right: 10%;
 `;
 
 const DomainWrapper = styled.div`
-  display: relative;
-	&:after {
-		content: '\003E';
-	}
+  position: relative;
 `;
 
 const DropDownAnchor = styled.div`
@@ -37,6 +42,7 @@ const DropDownWrapper = styled.div`
 const DropDownUl = styled.ul`
   overflow: hidden;
   list-style-type: none;
+  padding: 0;
   li {
     &:hover {
       text-decoration: underline;
@@ -46,7 +52,7 @@ const DropDownUl = styled.ul`
 
 const EmailForm = () => {
   const [Addr, setAddr] = useState('');
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(true);
   const domainInput = useRef('');
   const domainList = ['직접입력', 'naver.com', 'daum.net', 'gmail.com', 'nate.com', 'hanmail.net'];
 
@@ -84,6 +90,7 @@ const EmailForm = () => {
       <EmailInput name="emailId" placeholder="이메일 아이디" type="text" required />
       &nbsp;@&nbsp;
       <DomainWrapper onClick={onClick}>
+        <DropDownArrow />
         <EmailInput
           name="emailAddr"
           value={Addr}

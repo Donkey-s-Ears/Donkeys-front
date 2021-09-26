@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ButtonStyled } from '../../styled/button.styled';
 
 const RegisterTypeStyled = styled.div`
   position: absolute;
@@ -39,16 +40,9 @@ RegisterTypeStyled.middle = styled.div`
   border-bottom: 1px solid #e0e0e0;
 `;
 
-RegisterTypeStyled.button = styled.button`
-  margin: 20px 77px 0 77px;
-  width: calc(100% - 154px);
-  height: 55px;
-  background-color: #c38f63;
-  border-radius: 55px;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: 600;
+RegisterTypeStyled.button = styled(ButtonStyled)`
+  padding: 0 70px;
+  margin-top: 15px;
 `;
 
 RegisterTypeStyled.bottom = styled.div`

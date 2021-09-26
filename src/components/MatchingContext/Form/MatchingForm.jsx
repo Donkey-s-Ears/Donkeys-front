@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import MatchingFormStyled from './MatchingForm.styled.jsx';
+import MatchingFormStyled, { MatchingButton } from './MatchingForm.styled.jsx';
 
 const MatchingForm = ({ setApply }) => {
   const [category, setCategory] = useState(null);
@@ -31,17 +31,17 @@ const MatchingForm = ({ setApply }) => {
           </label>
 
           <label>
-            <input type="radio" name="category" value="happy" onChange={onChange} checked={checkedValue('happy')} />
+            <input type="radio" name="category" value="happy" onChange={onChange} checked={checkedValue('happy')} required />
             기쁨
           </label>
 
           <label>
-            <input type="radio" name="category" value="nothing" onChange={onChange} checked={checkedValue('nothing')} />
+            <input type="radio" name="category" value="nothing" onChange={onChange} checked={checkedValue('nothing')} required />
             상관없음
           </label>
         </div>
 
-        <button type="submit">매칭 신청</button>
+        <MatchingButton type="submit">매칭 신청</MatchingButton>
       </MatchingFormStyled>
     </div>
   );

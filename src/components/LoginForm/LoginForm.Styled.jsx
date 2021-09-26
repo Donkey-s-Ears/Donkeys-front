@@ -1,15 +1,7 @@
 import styled from 'styled-components';
+import { FormStyled } from '../../styled/form.styled';
 
-export const LoginWrapper = styled.div`
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0);
-  padding: 50px 350px;
-  background-color: ${({ theme }) => theme.form.bgColor};
-`;
-
-const LoginFormStyled = styled.form`
-  width: 460px;
+const LoginFormStyled = styled(FormStyled)`
   margin-bottom: 30px;
 `;
 
