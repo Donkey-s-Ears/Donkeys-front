@@ -15,7 +15,7 @@ const myCustomStyle = {
 const GoogleOAuth = ({ onClickHandler }) => {
   const onLoginGoogle = res => {
     console.log(res);
-    onClickHandler();
+    onClickHandler && onClickHandler();
   };
 
   return (

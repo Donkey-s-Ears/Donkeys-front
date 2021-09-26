@@ -5,5 +5,5 @@ export const MainInfoBackStyled = styled.div`
   left: 0;
   width: 100vw;
   height: 620px;
-  background-color: #c38f63;
+  background-color: ${({ theme }) => theme.mainColor};
 `;

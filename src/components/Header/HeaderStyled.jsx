@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const HeaderStyled = styled.div`
+export const HeaderStyled = styled.header`
   width: 100%;
   height: 70px;
   line-height: 70px;
@@ -22,7 +22,6 @@ export const NavBarStyled = styled.ul`
   list-style-type: none;
   justify-content: center;
   align-items: center;
-
   li:hover {
     a {
       color: orange;
@@ -31,6 +30,7 @@ export const NavBarStyled = styled.ul`
 
   a {
     text-decoration: none;
+    color: black;
   }
 `;
 

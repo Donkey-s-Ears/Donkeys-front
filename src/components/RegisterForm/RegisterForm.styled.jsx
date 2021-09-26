@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   left: 50%;
   transform: translate(-50%, 0);
   padding: 50px 350px;
-  background-color: #eabf9f;
+  background-color: ${({ theme }) => theme.form.bgColor};
 `;
 
 const RegisterFormStyled = styled.form`
