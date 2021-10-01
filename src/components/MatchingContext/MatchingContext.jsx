@@ -14,9 +14,9 @@ const MatchingContext = ({ setIsActive }) => {
   };
 
   // confirm 테스트용
-  // setTimeout(() => {
-  //   setConfirm(true);
-  // }, 5000);
+  setTimeout(() => {
+    setConfirm(true);
+  }, 5000);
 
   const matchingStep = () => {
     if (confirm) return <MatchingConfirm cancleHandler={onClick} />;
