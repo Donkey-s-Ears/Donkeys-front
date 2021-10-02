@@ -3,23 +3,44 @@ import WebRTC from '../WebRTC/WebRTC.jsx';
 import io from 'socket.io-client';
 
 const CallPage = () => {
-  const caller = useRef();
-  const callee = useRef();
-  const socket = io.connect('http://localhost:3000/');
-  const [WR, setWR] = useState(null);
-  const [mics, setMics] = useState(null);
-
-  useEffect(() => {
-    setWR(new WebRTC(caller, callee, socket));
-  }, []);
+  let caller = useRef();
+  let callee = useRef();
+  // const [mics, setMics] = useState(null);
 
   useEffect(async () => {
-    if (!WR) return;
+    const socket = io();
+    console.log(caller, callee);
+    const WR = new WebRTC(caller, callee);
     await WR.initCall();
-    await WR.getMics().then(arr => setMics(arr));
+    // await WR.getMics().then(arr => setMics(arr));
+
+    socket.on('welcome', async () => {
+      console.log('welcome');
+      const offer = await WR.myPeerConnection.createOffer();
+      WR.myPeerConnection.setLocalDescription(offer);
+      socket.emit('offer', offer, '123');
+    });
+
+    socket.on('offer', async offer => {
+      console.log('Received the offer');
+      WR.myPeerConnection.setRemoteDescription(offer);
+      const answer = await WR.myPeerConnection.createAnswer();
+      WR.myPeerConnection.setLocalDescription(answer);
+      socket.emit('answer', answer, '123');
+      console.log('Sent the offer');
+    });
+
+    socket.on('answer', answer => {
+      console.log('Received the answer', answer);
+      WR.myPeerConnection.setRemoteDescription(answer);
+    });
+
+    socket.on('ice', ice => {
+      WR.myPeerConnection.addIceCandidate(ice);
+    });
+
     socket.emit('join_room', '123');
-    caller.current.srcObject = WR.myStream;
-  }, [WR]);
+  }, [callee.current]);
 
   const micsOption = () => {
     return mics.mics.map(mic => (
@@ -29,41 +50,10 @@ const CallPage = () => {
     ));
   };
 
-  socket.on('connect', () => {
-    console.log('connected!');
-  });
-
-  socket.on('welcome', async () => {
-    console.log('welcome');
-    const offer = await WR.myPeerConnection.createOffer();
-    WR.myPeerConnection.setLocalDescription(offer);
-    socket.emit('offer', offer, '123');
-  });
-
-  socket.on('offer', async offer => {
-    console.log('Received the offer');
-    WR.myPeerConnection.setRemoteDescription(offer);
-    const answer = await WR.myPeerConnection.createAnswer();
-    WR.myPeerConnection.setLocalDescription(answer);
-    socket.emit('answer', answer, '123');
-    console.log('Sent the offer');
-  });
-
-  socket.on('answer', answer => {
-    console.log('Received the answer');
-    WR.myPeerConnection.setRemoteDescription(answer);
-  });
-
-  socket.on('ice', ice => {
-    WR.myPeerConnection.addIceCandidate(ice);
-  });
-
-  if (!WR || !mics) return <div>Loading 중..</div>;
-
   return (
     <div>
       <video ref={caller} autoPlay playsInline style={{ width: '400px', height: '400px', backgroundColor: 'black' }}></video>
-      <select>{WR && micsOption()}</select>
+      {/* <select>{mics && micsOption()}</select> */}
       <br></br>
       <video ref={callee} autoPlay playsInline style={{ width: '400px', height: '400px', backgroundColor: 'black' }}></video>
     </div>

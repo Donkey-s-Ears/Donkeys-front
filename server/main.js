@@ -1,28 +1,26 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const path = require('path');
-// const webpack = require('webpack');
-// const config = require('../webpack.dev.config');
 const http = require('http').createServer(app);
-const wsServer = require('socket.io')(http);
-const port = 3000;
-// const compiler = webpack(config);
-const index = path.resolve(__dirname, '../dist/index.html');
-// console.log(index);
+// const wsServer = require('socket.io')(http, { cors: { origin: '*' } });
+const { Server } = require('socket.io');
+const wsServer = new Server(http, { cors: { origin: '*' } });
 
-// app.use(router);
-// app.use(webpackDevMiddleware(compiler));
+const port = 3000;
+const index = path.resolve(__dirname, '../dist/index.html');
+
+app.use(
+  cors({
+    origin: '*'
+  })
+);
 app.use('/', express.static(path.resolve(__dirname, '../dist')));
 
 app.get('*', (req, res, next) => {
   if (req.path.split('/')[1] === 'static') return next();
   res.sendFile(index);
 });
-
-// let devServer = new WebpackDevServer(config.devServer, compiler);
-// devServer.start(3001, () => {
-//   console.log('webpack-dev-server is listening on port', 3001);
-// });
 
 wsServer.on('connection', socket => {
   console.log('connection socket');
